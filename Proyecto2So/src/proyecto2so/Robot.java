@@ -15,15 +15,21 @@ public class Robot {
     
     private int probabilidad;
     
-    public void revisarConsola(Nodo consola, Nivel1 cola1, Nivel2 cola2, Nivel3 cola3, Mantenimiento cola4){
+    public void revisarConsola(Cola cola, Cola mantenimiento){
         
         probabilidad = (int)(Math.random()*10+1);
         
         if(probabilidad < 4){
             
+            cola.eliminarPrimero();
+            
         }else if(probabilidad > 3 && probabilidad < 9){
             
+            cola.encolar(cola.primero);
+            
         }else{
+            
+            cola.encolarMantenimiento(mantenimiento, cola.primero);
             
         }
         

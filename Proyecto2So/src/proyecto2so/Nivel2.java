@@ -9,89 +9,12 @@ package proyecto2so;
  *
  * @author leonp
  */
-public class Nivel2 {
+public class Nivel2 extends Cola{
     
-    Nodo primero = null ;
-    public int dimension = 0;
-    
-    public boolean esVacio(){
-        return primero == null;
-    }
-    
-    public void insertarPrimero(int id){
+    public void subirNivel1(Cola cola){
         
-        Nodo nuevo = new Nodo(id);
-        
-        if(esVacio()){
-            
-            primero = nuevo;
-            
-        }else{
-            
-            nuevo.siguiente = primero;
-            primero = nuevo;
-            
-        }
-        
-        dimension ++;
-    }
-    
-    public void insertarUltimo(int id){
-        
-        Nodo nuevo = new Nodo(id);
-        
-        if(esVacio()){
-            primero = nuevo;
-        }else{
-           
-           Nodo temp = primero;
-           
-           while(temp.siguiente != null){
-               temp = temp.siguiente;
-           }
-           
-           temp.siguiente = nuevo;
-        }
-        
-        dimension ++;
-    }
-    
-    public int ObtenerValorDe(int n){ // Modificar ////////////////////////
-        if(primero==null){
-            return -1;
-        }else{
-            Nodo temp = primero;
-            int cont = 0;
-            while(cont<n && temp.siguiente!=null){
-                temp = temp.siguiente;
-                cont++;
-            }
-            if(cont != n){
-                return -1;
-                
-            }else return temp.id ;
-            
-        }
-    }
-    
-    public void imprimirCola(){
-        
-        for (int i = 0; i < dimension; i++) {
-            System.out.println(this.ObtenerValorDe(i));
-        }
-    }
-    
-    public void eliminarPrimero(){
-        
-        if(primero != null){
-            
-        Nodo prim = primero;
-        primero = primero.siguiente;
-        prim.siguiente = null;
-        dimension--;
-            
-        }
-        
+        cola.encolar(primero);
+        eliminarPrimero();
     }
     
 }
