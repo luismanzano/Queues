@@ -5,10 +5,16 @@
  */
 package proyecto2so;
 
+
+
 /**
  *
  * @author leonp
  */
 public class Robot {
+    
+    public void revisarConsola(Nodo consola, int prioridad){
+        
+    }
     
 }

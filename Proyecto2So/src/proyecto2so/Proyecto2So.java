@@ -5,6 +5,9 @@
  */
 package proyecto2so;
 
+import java.util.Timer;
+import java.util.TimerTask;
+ 
 /**
  *
  * @author leonp
@@ -16,6 +19,26 @@ public class Proyecto2So {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Timer temporizador = new Timer();
+        
+        TimerTask robot = new TimerTask() {
+            @Override
+            public void run() {
+            
+            }
+        };
+        
+        TimerTask adminstrador = new TimerTask() {
+            @Override
+            public void run() {
+            
+            }
+        };
+        
+        temporizador.schedule(robot, 0, 7000);
+        temporizador.schedule(robot, 0, 14000);
+        
     }
     
 }
