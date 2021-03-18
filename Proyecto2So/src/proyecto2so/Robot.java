@@ -13,7 +13,19 @@ package proyecto2so;
  */
 public class Robot {
     
-    public void revisarConsola(Nodo consola, int prioridad){
+    private int probabilidad;
+    
+    public void revisarConsola(Nodo consola, Nivel1 cola1, Nivel2 cola2, Nivel3 cola3, Mantenimiento cola4){
+        
+        probabilidad = (int)(Math.random()*10+1);
+        
+        if(probabilidad < 4){
+            
+        }else if(probabilidad > 3 && probabilidad < 9){
+            
+        }else{
+            
+        }
         
     }
     

@@ -14,15 +14,15 @@ public class Nivel3 {
     Nodo primero = null ;
     public int dimension = 0;
     
-    public boolean esVacioNivel(){
+    public boolean esVacio(){
         return primero == null;
     }
     
-    public void insertarPrimeroNivel(int id){
+    public void insertarPrimero(int id){
         
         Nodo nuevo = new Nodo(id);
         
-        if(esVacioNivel()){
+        if(esVacio()){
             
             primero = nuevo;
             
@@ -36,11 +36,11 @@ public class Nivel3 {
         dimension ++;
     }
     
-    public void insertarUltimoNivel(int id){
+    public void insertarUltimo(int id){
         
         Nodo nuevo = new Nodo(id);
         
-        if(esVacioNivel()){
+        if(esVacio()){
             primero = nuevo;
         }else{
            
@@ -74,7 +74,7 @@ public class Nivel3 {
         }
     }
     
-    public void imprimirNivel(){
+    public void imprimirCola(){
         
         for (int i = 0; i < dimension; i++) {
             System.out.println(this.ObtenerValorDe(i));

@@ -20,24 +20,30 @@ public class Proyecto2So {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        Administrador administrador = new Administrador();
+        Robot robot = new Robot();
+        Nivel1 cola1 = new Nivel1();
+        Nivel2 cola2 = new Nivel2();
+        Nivel3 cola3 = new Nivel3();
+        Mantenimiento cola4 = new Mantenimiento();
         Timer temporizador = new Timer();
         
-        TimerTask robot = new TimerTask() {
+        TimerTask tareaRobot = new TimerTask() {
             @Override
             public void run() {
-            
+                //robot.revisarConsola(consola, cola1, cola2, cola3, cola4);
             }
         };
         
-        TimerTask adminstrador = new TimerTask() {
+        TimerTask tareaAdministrador = new TimerTask() {
             @Override
             public void run() {
-            
+                administrador.crearConsola();
             }
         };
         
-        temporizador.schedule(robot, 0, 7000);
-        temporizador.schedule(robot, 0, 14000);
+        temporizador.schedule(tareaRobot, 0, 7000);
+        temporizador.schedule(tareaAdministrador, 0, 14000);
         
     }
     
