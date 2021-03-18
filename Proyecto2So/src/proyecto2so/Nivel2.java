@@ -11,10 +11,14 @@ package proyecto2so;
  */
 public class Nivel2 extends Cola{
     
-    public void subirNivel1(Cola cola){
+    public Nivel2 (){
         
-        cola.encolar(primero);
-        eliminarPrimero();
+    }
+    
+    public void subirNivel1(Cola cola, Nodo nodo){
+        
+        cola.encolar(nodo);
+//        eliminarNodo(nodo);
     }
     
 }

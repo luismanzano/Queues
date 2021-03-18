@@ -69,9 +69,9 @@ public class Cola {
         
     }
     
-    public int ObtenerValorDe(int n){ // Modificar ////////////////////////
+    public Nodo ObtenerValorDe(int n){ 
         if(primero==null){
-            return -1;
+            return null;
         }else{
             Nodo temp = primero;
             int cont = 0;
@@ -80,9 +80,9 @@ public class Cola {
                 cont++;
             }
             if(cont != n){
-                return -1;
+                return null;
                 
-            }else return temp.id ;
+            }else return temp;
             
         }
     }
@@ -106,10 +106,42 @@ public class Cola {
         }
     }
     
+    public void eliminarNodo(int id){
+        
+        if(primero==null){
+            
+        }else{
+            Nodo temp = primero;
+            int cont = 0;
+            while(cont<id && temp.siguiente!=null){
+                temp = temp.siguiente;
+                cont++;
+            }
+            if(cont != id){
+             
+                
+            }
+        }   
+    }
+    
     public void encolarMantenimiento(Cola cola, Nodo nodo){
         
         cola.encolar(nodo);
         
+    }
+    
+    public void actualizarContador(){
+        
+        if(!esVacio()){
+            Nodo temp = primero;
+            
+            do {                
+                
+                temp.contador +=1;
+            
+                
+            } while (temp.siguiente != null);
+        }
     }
     
 }

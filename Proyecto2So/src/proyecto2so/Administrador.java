@@ -19,12 +19,11 @@ public class Administrador {
      */
     
     
-        Robot robot = new Robot();
-        Nivel1 cola1 = new Nivel1();
-        Nivel2 cola2 = new Nivel2();
-        Nivel3 cola3 = new Nivel3();
-        Mantenimiento cola4 = new Mantenimiento();
-        private int contador = 0;
+        static Nivel1 cola1 = new Nivel1();
+        static Nivel2 cola2 = new Nivel2();
+        static Nivel3 cola3 = new Nivel3();
+        static Mantenimiento cola4 = new Mantenimiento();
+        private int contadorId = 0;
         private int aleatorio;
         
         
@@ -33,12 +32,31 @@ public class Administrador {
         // TODO code application logic here
         
         Administrador admin = new Administrador();
+        Robot robot = new Robot();
         
         Timer temporizador = new Timer();
         
         TimerTask tareaRobot = new TimerTask() {
             @Override
             public void run() {
+                if(!cola1.esVacio()){
+                    
+                    robot.revisarConsola(cola1, cola4);
+                    cola1.actualizarContador();
+                    
+                }else if(!cola2.esVacio()){
+                    
+                    robot.revisarConsola(cola2, cola4);
+                    cola2.actualizarContador();
+                    
+                }else if(!cola3.esVacio()){
+                    
+                    robot.revisarConsola(cola3, cola4);
+                    cola3.actualizarContador();
+                    
+                }
+                
+                admin.aumentarNivel(cola1, cola2, cola3);
                 
             }
         };
@@ -56,29 +74,51 @@ public class Administrador {
     }
     
     
-        public void crearConsola(){
-        
+    public void crearConsola(){
+
         aleatorio = (int)(Math.random()*10+1);
-        
+
         if(aleatorio < 4){
-            
-            contador++;
-            cola1.insertarPrimero(contador);
-            
+
+            contadorId++;
+            cola1.insertarPrimero(contadorId);
+
         }else if(aleatorio > 3 && aleatorio < 7){
-            
-            contador++;
-            cola2.insertarPrimero(contador);
-            
+
+            contadorId++;
+            cola2.insertarPrimero(contadorId);
+
         }else{
+
+            contadorId++;
+            cola3.insertarPrimero(contadorId);
+
+        }
+
+    }
+
+    public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3){
+        
+        if(!cola2.esVacio()){
             
-            contador++;
-            cola3.insertarPrimero(contador);
+            Nodo temp = cola2.primero;
+            
+            do { 
+                
+                if(temp.contador > 14){
+                    
+                    cola2.subirNivel1(cola1, temp);
+                    
+                    
+                }
+            
+                
+            } while (temp.siguiente != null);
+            
             
         }
         
-    }
-
+    }    
     
 }
 

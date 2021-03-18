@@ -21,18 +21,19 @@ public class Robot {
         
         if(probabilidad < 4){
             
-            cola.eliminarPrimero();
+            System.out.println("Sale al mercado");
             
         }else if(probabilidad > 3 && probabilidad < 9){
-            
+            cola.primero.contador = -1;
             cola.encolar(cola.primero);
             
         }else{
-            
+            cola.primero.contador = 0;
             cola.encolarMantenimiento(mantenimiento, cola.primero);
             
         }
         
+        cola.eliminarPrimero();
     }
     
 }
