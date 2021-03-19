@@ -17,7 +17,7 @@ public class Nivel2 extends Cola{
     
     public void subirNivel1(Cola cola, Nodo nodo){
         
-        cola.encolar(nodo);
+//        cola.encolar(nodo);
 //        eliminarNodo(nodo);
     }
     

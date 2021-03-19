@@ -75,29 +75,35 @@ public class Administrador {
     
     
     public void crearConsola(){
-
+        
+        
         aleatorio = (int)(Math.random()*10+1);
+        
+        if(aleatorio < 8){
 
-        if(aleatorio < 4){
+            aleatorio = (int)(Math.random()*9+1);
 
-            contadorId++;
-            cola1.insertarPrimero(contadorId);
+            if(aleatorio < 4){
 
-        }else if(aleatorio > 3 && aleatorio < 7){
+                contadorId++;
+                cola1.insertarPrimero(contadorId);
 
-            contadorId++;
-            cola2.insertarPrimero(contadorId);
+            }else if(aleatorio > 3 && aleatorio < 7){
 
-        }else{
+                contadorId++;
+                cola2.insertarPrimero(contadorId);
 
-            contadorId++;
-            cola3.insertarPrimero(contadorId);
+            }else{
 
+                contadorId++;
+                cola3.insertarPrimero(contadorId);
+
+            }
         }
 
     }
 
-    public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3){
+    public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3){ ////////////FALTA COMPLETAR CON MARAVILLOSA IDEA DE LUIS ////////////
         
         if(!cola2.esVacio()){
             
@@ -111,13 +117,40 @@ public class Administrador {
                     
                     
                 }
-            
-                
+           
+                temp = temp.siguiente;
             } while (temp.siguiente != null);
             
             
         }
         
+        
+        if(!cola3.esVacio()){
+            
+            Nodo temp = cola3.primero;
+            
+            do { 
+                
+                if(temp.contador > 14){
+                    
+                       cola2.encolar(temp);
+//                    cola3.subirNivel2(cola2, temp);
+                        
+
+
+
+
+/*
+nodo.anterior.siguiente
+*/
+                    
+                }
+           
+                temp = temp.siguiente;
+            } while (temp.siguiente != null);
+            
+            
+        }
     }    
     
 }

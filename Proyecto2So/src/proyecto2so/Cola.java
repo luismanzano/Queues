@@ -11,7 +11,7 @@ package proyecto2so;
  */
 public class Cola {
     
-     Nodo primero = null ;
+    Nodo primero = null ;
     public int dimension = 0;
     
     public boolean esVacio(){
@@ -65,7 +65,7 @@ public class Cola {
            }
            
            temp.siguiente = nodo;
-        
+           nodo.siguiente = null;
         
     }
     
@@ -106,29 +106,30 @@ public class Cola {
         }
     }
     
-    public void eliminarNodo(int id){
-        
-        if(primero==null){
-            
-        }else{
-            Nodo temp = primero;
-            int cont = 0;
-            while(cont<id && temp.siguiente!=null){
-                temp = temp.siguiente;
-                cont++;
-            }
-            if(cont != id){
-             
-                
-            }
-        }   
-    }
+//    public void eliminarNodo(int id){ //////////////////// FALTA COMPLETAR /////////////////////
+//        
+//        if(primero==null){
+//            
+//        }else{
+//            Nodo temp = primero;
+//            int cont = 0;
+//            while(cont<id && temp.siguiente!=null){
+//                temp = temp.siguiente;
+//                cont++;
+//            }
+//            if(cont != id){
+//             
+//                
+//            }
+//        }   
+//    } ///////////////////////////////// FALTA COMPLETAR //////////////////////////
     
-    public void encolarMantenimiento(Cola cola, Nodo nodo){
+    public void encolarMantenimiento(Cola cola, Nodo nodo){ ////////////////////////// FALTA COMPLETAR /////////////////////
         
         cola.encolar(nodo);
+        cola.eliminarPrimero();
         
-    }
+    } /////////////////////// FALTA COMPLETAR /////////////////////////////
     
     public void actualizarContador(){
         
@@ -138,7 +139,7 @@ public class Cola {
             do {                
                 
                 temp.contador +=1;
-            
+                temp = temp.siguiente;
                 
             } while (temp.siguiente != null);
         }
