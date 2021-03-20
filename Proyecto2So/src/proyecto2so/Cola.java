@@ -66,7 +66,28 @@ public class Cola {
            
            temp.siguiente = nodo;
            nodo.siguiente = null;
+           nodo.anterior = temp;
         
+    }
+    
+    public void desencolar(int id) {
+        
+        Nodo temp = primero;
+        
+        while(temp.siguiente != null){
+            if (temp.id == id) {
+                break;
+            }else{
+               temp = temp.siguiente;
+            }
+            
+            temp.anterior.siguiente = temp.siguiente;
+            temp.siguiente.anterior = temp.anterior;
+            
+            temp.siguiente = null;
+            temp.anterior = null;
+            
+           }
     }
     
     public Nodo ObtenerValorDe(int n){ 
@@ -100,6 +121,7 @@ public class Cola {
             
         Nodo prim = primero;
         primero = primero.siguiente;
+        primero.anterior = null;
         prim.siguiente = null;
         dimension--;
             

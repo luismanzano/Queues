@@ -13,6 +13,7 @@ public class Nodo {
     
     
     public Nodo siguiente = null;
+    public Nodo anterior = null;
     public int id;
     public int contador = 0;
 
