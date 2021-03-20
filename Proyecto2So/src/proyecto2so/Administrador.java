@@ -43,16 +43,25 @@ public class Administrador {
                     
                     robot.revisarConsola(cola1, cola4);
                     cola1.actualizarContador();
+                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
                     
                 }else if(!cola2.esVacio()){
                     
                     robot.revisarConsola(cola2, cola4);
                     cola2.actualizarContador();
+                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
                     
                 }else if(!cola3.esVacio()){
                     
                     robot.revisarConsola(cola3, cola4);
                     cola3.actualizarContador();
+                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
                     
                 }
                 
@@ -100,6 +109,10 @@ public class Administrador {
 
             }
         }
+        
+        Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
 
     }
 
@@ -121,7 +134,9 @@ public class Administrador {
                 temp = temp.siguiente;
             } while (temp.siguiente != null);
             
-            
+            Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
         }
         
         
@@ -148,6 +163,9 @@ nodo.anterior.siguiente
            
                 temp = temp.siguiente;
             } while (temp.siguiente != null);
+            Interfaz.setNivel1(String.valueOf(cola1.dimension));
+        Interfaz.setNivel2(String.valueOf(cola2.dimension));
+        Interfaz.setNivel3(String.valueOf(cola3.dimension));
             
             
         }

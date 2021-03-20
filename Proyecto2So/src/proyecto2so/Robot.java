@@ -15,7 +15,7 @@ public class Robot {
     
     private int probabilidad;
     
-    public void revisarConsola(Cola cola, Cola mantenimiento){
+    public void revisarConsola(Cola cola, Mantenimiento mantenimiento){
         
         probabilidad = (int)(Math.random()*10+1);
         
@@ -32,6 +32,8 @@ public class Robot {
             cola.encolarMantenimiento(mantenimiento, cola.primero);
             
         }
+        
+        mantenimiento.listoParaRevision();
         
         cola.eliminarPrimero();
     }

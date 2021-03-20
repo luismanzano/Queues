@@ -121,7 +121,7 @@ public class Cola {
             
         Nodo prim = primero;
         primero = primero.siguiente;
-        primero.anterior = null;
+//        primero.anterior = null;
         prim.siguiente = null;
         dimension--;
             

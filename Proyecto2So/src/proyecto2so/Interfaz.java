@@ -17,6 +17,8 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,17 +29,77 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        Nivel1Text = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Nivel2Text = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Nivel3Text = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        RobotText = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Nivel 1");
+
+        Nivel1Text.setText("jLabel2");
+
+        jLabel3.setText("Nivel 2");
+
+        Nivel2Text.setText("jLabel4");
+
+        jLabel5.setText("Nivel 3");
+
+        Nivel3Text.setText("jLabel6");
+
+        jLabel7.setText("Robot");
+
+        RobotText.setText("jLabel8");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Nivel3Text)
+                    .addComponent(jLabel5)
+                    .addComponent(Nivel2Text)
+                    .addComponent(jLabel3)
+                    .addComponent(Nivel1Text)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(46, 46, 46))
+                    .addComponent(RobotText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Nivel1Text)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nivel2Text)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nivel3Text))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RobotText)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
@@ -74,10 +136,34 @@ public class Interfaz extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Interfaz().setVisible(true);
+                Administrador administrador = new Administrador();
+                administrador.programa();
             }
         });
     }
+    
+        
+    public static void setNivel1(String string){
+        Nivel1Text.setText(string);
+    }
+    
+    public static void setNivel2(String string){
+        Nivel2Text.setText(string);
+    }
+    
+    public static void setNivel3(String string){
+        Nivel3Text.setText(string);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JLabel Nivel1Text;
+    private static javax.swing.JLabel Nivel2Text;
+    private static javax.swing.JLabel Nivel3Text;
+    private javax.swing.JLabel RobotText;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
