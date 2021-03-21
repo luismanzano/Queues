@@ -60,7 +60,12 @@ public class Cola {
         
         if (primero == null) {
             insertarPrimero(nodo.id);
-        } else{
+        
+        }else if(primero.siguiente == null){
+        
+            primero.siguiente = nodo;
+            
+        }else{
             
          Nodo temp = primero;
            
@@ -163,11 +168,17 @@ public class Cola {
         
         if(!esVacio()){
             Nodo temp = primero;
+            
             while (temp.siguiente != null){                
                 
                 temp.contador +=1;
                 temp = temp.siguiente;
                 
+            }
+            
+            if(primero.siguiente == null){
+             
+                temp.contador += 15;
             }
             
             //CODIGO DE LEO 

@@ -123,8 +123,8 @@ public class Administrador {
             }
         };
         
-        temporizador.schedule(tareaRobot, 0, 1000);
-        temporizador.schedule(tareaAdministrador, 0, 2000);
+        temporizador.schedule(tareaRobot, 0, 2000);
+        temporizador.schedule(tareaAdministrador, 0, 3000);
         
     }
     
@@ -172,7 +172,8 @@ public class Administrador {
             do { 
                 
                 if(temp.contador > 14){
-                    
+                    System.out.println("SUBIENDO A COLA 1");
+                    temp.contador = 0; 
                     cola2.subirNivel1(cola1, temp);
                     
                     actualizarEtiquetas();
@@ -191,8 +192,9 @@ public class Administrador {
             do { 
                 
                 if(temp.contador > 14){
-                    
-                       cola2.encolar(temp);
+                        System.out.println("SUBIENDO A COLA 2");
+                        temp.contador = 0;
+                       cola3.subirNivel2(cola2,temp);
                        actualizarEtiquetas();
 //                    cola3.subirNivel2(cola2, temp);
                         

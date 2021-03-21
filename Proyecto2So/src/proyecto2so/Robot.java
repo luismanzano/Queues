@@ -27,7 +27,7 @@ public class Robot {
             System.out.println("Sale al mercado");
             
         }else if(probabilidad > 3 && probabilidad < 9){
-            cola.primero.contador = -1;
+            cola.primero.contador = 0;
             cola.encolar(cola.primero);
             System.out.println("Mas tiempo de revision");
             
