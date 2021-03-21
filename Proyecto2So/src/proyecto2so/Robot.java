@@ -18,6 +18,9 @@ public class Robot {
     public void revisarConsola(Cola cola, Mantenimiento mantenimiento){
         
         probabilidad = (int)(Math.random()*10+1);
+        System.out.println("probabilidad " + probabilidad);
+        //IMPRIMO LA CONSOLA QUE ESTA REVISANDO 
+        Interfaz.RobotText.setText("ID: " + cola.primero.id + "Contador " + cola.primero.contador);
         
         if(probabilidad < 4){
             
@@ -26,10 +29,12 @@ public class Robot {
         }else if(probabilidad > 3 && probabilidad < 9){
             cola.primero.contador = -1;
             cola.encolar(cola.primero);
+            System.out.println("Mas tiempo de revision");
             
         }else{
             cola.primero.contador = 0;
             cola.encolarMantenimiento(mantenimiento, cola.primero);
+            System.out.println("Salio para mantenimiento");
             
         }
         

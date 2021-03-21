@@ -7,6 +7,7 @@ package proyecto2so;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JLabel;
  
 /**
  *
@@ -27,6 +28,57 @@ public class Administrador {
         private int aleatorio;
         
         
+        public static void actualizarEtiquetas(){
+            JLabel nodos1[] = new JLabel[]{Interfaz.Nivel1_1, Interfaz.Nivel1_2, Interfaz.Nivel1_3, Interfaz.Nivel1_4, Interfaz.Nivel1_5, Interfaz.Nivel1_6};
+            JLabel nodos2[] = new JLabel[]{Interfaz.Nivel2_1, Interfaz.Nivel2_2, Interfaz.Nivel2_3, Interfaz.Nivel2_4, Interfaz.Nivel2_5, Interfaz.Nivel2_6};
+            JLabel nodos3[] = new JLabel[]{Interfaz.Nivel3_1, Interfaz.Nivel3_2, Interfaz.Nivel3_3, Interfaz.Nivel3_4, Interfaz.Nivel3_5, Interfaz.Nivel3_6};
+            JLabel nodos4[] = new JLabel[]{Interfaz.Mantenimiento_1, Interfaz.Mantenimiento_2, Interfaz.Mantenimiento_3, Interfaz.Mantenimiento_4, Interfaz.Mantenimiento_5, Interfaz.Mantenimiento_6};
+           
+            
+            Nodo temp1 = cola1.primero;
+            Nodo temp2 = cola2.primero;
+            Nodo temp3 = cola3.primero;
+            Nodo temp4 = cola4.primero;
+            
+            for (int i = 0; i < 6; i++) {
+                //ACTUALIZACION DE LA COLA 1
+                if (temp1 != null) {
+                nodos1[i].setText("ID: " + temp1.id + "\n" + "Contador: "+ String.valueOf(temp1.contador));
+                temp1 = (temp1.siguiente != null) ? temp1.siguiente : null;
+            } else {
+                    nodos1[i].setText("No hay");
+                }
+                
+                
+                 //ACTUALIZACION DE LA COLA 2
+                if (temp2 != null) {
+                nodos2[i].setText("ID: " + temp2.id + "\n" + "Contador: "+ String.valueOf(temp2.contador));
+                temp2 = (temp2.siguiente != null) ? temp2.siguiente : null;
+            } else {
+                    nodos2[i].setText("No hay");
+                }
+                
+                
+                 //ACTUALIZACION DE LA COLA 3
+                if (temp3 != null) {
+                nodos3[i].setText("ID: " + temp3.id + "\n" + "Contador: "+ String.valueOf(temp3.contador));
+                temp3 = (temp3.siguiente != null) ? temp3.siguiente : null;
+            } else {
+                    nodos3[i].setText("No hay");
+                }
+                
+               //ACTUALIZACION DE MANTENIMIENTO
+                if (temp4 != null) {
+                nodos4[i].setText("ID: " + temp4.id + "\n" + "Contador: "+ String.valueOf(temp4.contador));
+                temp4 = (temp4.siguiente != null) ? temp4.siguiente : null;
+            } else {
+                    nodos4[i].setText("No hay");
+                }
+                
+                
+            }
+            
+        }
         
     public static void programa(){
         // TODO code application logic here
@@ -43,30 +95,24 @@ public class Administrador {
                     
                     robot.revisarConsola(cola1, cola4);
                     cola1.actualizarContador();
-                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
+                    actualizarEtiquetas();
                     
                 }else if(!cola2.esVacio()){
                     
                     robot.revisarConsola(cola2, cola4);
                     cola2.actualizarContador();
-                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
+                    actualizarEtiquetas();
                     
                 }else if(!cola3.esVacio()){
                     
                     robot.revisarConsola(cola3, cola4);
                     cola3.actualizarContador();
-                    Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
+                    actualizarEtiquetas();
                     
                 }
                 
                 admin.aumentarNivel(cola1, cola2, cola3);
-                
+                actualizarEtiquetas();
             }
         };
         
@@ -77,13 +123,14 @@ public class Administrador {
             }
         };
         
-        temporizador.schedule(tareaRobot, 0, 7000);
-        temporizador.schedule(tareaAdministrador, 0, 14000);
+        temporizador.schedule(tareaRobot, 0, 1000);
+        temporizador.schedule(tareaAdministrador, 0, 2000);
         
     }
     
     
     public void crearConsola(){
+        
         
         
         aleatorio = (int)(Math.random()*10+1);
@@ -101,19 +148,19 @@ public class Administrador {
 
                 contadorId++;
                 cola2.insertarPrimero(contadorId);
+                actualizarEtiquetas();
 
             }else{
 
                 contadorId++;
                 cola3.insertarPrimero(contadorId);
+                actualizarEtiquetas();
 
             }
         }
         
-        Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
-
+        actualizarEtiquetas();
+        
     }
 
     public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3){ ////////////FALTA COMPLETAR CON MARAVILLOSA IDEA DE LUIS ////////////
@@ -128,15 +175,12 @@ public class Administrador {
                     
                     cola2.subirNivel1(cola1, temp);
                     
-                    
+                    actualizarEtiquetas();
                 }
            
-                temp = temp.siguiente;
+                temp = (temp.siguiente != null) ? temp.siguiente : temp;
             } while (temp.siguiente != null);
             
-            Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
         }
         
         
@@ -149,6 +193,7 @@ public class Administrador {
                 if(temp.contador > 14){
                     
                        cola2.encolar(temp);
+                       actualizarEtiquetas();
 //                    cola3.subirNivel2(cola2, temp);
                         
 
@@ -161,14 +206,12 @@ nodo.anterior.siguiente
                     
                 }
            
-                temp = temp.siguiente;
+                temp = (temp.siguiente != null) ? temp.siguiente : temp;
             } while (temp.siguiente != null);
-            Interfaz.setNivel1(String.valueOf(cola1.dimension));
-        Interfaz.setNivel2(String.valueOf(cola2.dimension));
-        Interfaz.setNivel3(String.valueOf(cola3.dimension));
             
             
         }
+        actualizarEtiquetas();
     }    
     
 }

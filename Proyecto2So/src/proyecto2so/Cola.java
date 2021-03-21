@@ -58,6 +58,10 @@ public class Cola {
     
     public void encolar(Nodo nodo){
         
+        if (primero == null) {
+            insertarPrimero(nodo.id);
+        } else{
+            
          Nodo temp = primero;
            
            while(temp.siguiente != null){
@@ -67,6 +71,8 @@ public class Cola {
            temp.siguiente = nodo;
            nodo.siguiente = null;
            nodo.anterior = temp;
+        }
+        
         
     }
     
@@ -149,7 +155,7 @@ public class Cola {
     public void encolarMantenimiento(Cola cola, Nodo nodo){ ////////////////////////// FALTA COMPLETAR /////////////////////
         
         cola.encolar(nodo);
-        cola.eliminarPrimero();
+        //cola.eliminarPrimero();
         
     } /////////////////////// FALTA COMPLETAR /////////////////////////////
     
@@ -157,14 +163,22 @@ public class Cola {
         
         if(!esVacio()){
             Nodo temp = primero;
-            
-            do {                
+            while (temp.siguiente != null){                
                 
                 temp.contador +=1;
                 temp = temp.siguiente;
                 
-            } while (temp.siguiente != null);
-        }
+            }
+            
+            //CODIGO DE LEO 
+//            do {                
+//                
+//                temp.contador +=1;
+//                temp = temp.siguiente;
+//                
+//            } while (temp.siguiente != null);
+//        }
     }
     
+}
 }
