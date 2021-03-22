@@ -92,20 +92,23 @@ public class Administrador {
             @Override
             public void run() {
                 if(!cola1.esVacio()){
-                    
+                    System.out.println("COLA 1");
                     robot.revisarConsola(cola1, cola4);
                     cola1.actualizarContador();
+                    
                     actualizarEtiquetas();
                     
                 }else if(!cola2.esVacio()){
-                    
+                    System.out.println("COLA 2");
                     robot.revisarConsola(cola2, cola4);
+                    
                     cola2.actualizarContador();
                     actualizarEtiquetas();
                     
                 }else if(!cola3.esVacio()){
-                    
+                    System.out.println("COLA 3");
                     robot.revisarConsola(cola3, cola4);
+                    
                     cola3.actualizarContador();
                     actualizarEtiquetas();
                     
@@ -123,8 +126,8 @@ public class Administrador {
             }
         };
         
-        temporizador.schedule(tareaRobot, 0, 2000);
-        temporizador.schedule(tareaAdministrador, 0, 3000);
+        temporizador.schedule(tareaRobot, 0, 3000);
+        temporizador.schedule(tareaAdministrador, 0, 4000);
         
     }
     

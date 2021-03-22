@@ -16,16 +16,11 @@ public class Nivel3 extends Cola {
         //ENCONTRAR EL NODO QUE QUIERO 
         //MANDARLO A LA NUEVA COLA 
         //DESENCOLAR EL NODO QUE QUIERO 
+         desencolar(nodo.id);
+        
         cola.encolar(nodo);
-        
-        Nodo temp = nodo.anterior;
-        
-        temp.siguiente = nodo.siguiente;
-        
-        nodo.siguiente.anterior = temp;
-        
-        nodo.siguiente = null;
-        nodo.anterior = null;
+       
+        System.out.println("Se subio a nivel 2: " + nodo.id);
     }
     
 }

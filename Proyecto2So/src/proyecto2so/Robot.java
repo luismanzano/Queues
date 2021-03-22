@@ -18,7 +18,8 @@ public class Robot {
     public void revisarConsola(Cola cola, Mantenimiento mantenimiento){
         
         probabilidad = (int)(Math.random()*10+1);
-        System.out.println("probabilidad " + probabilidad);
+       //System.out.println("probabilidad " + probabilidad);
+        System.out.println("revisando: " + cola.primero.id);
         //IMPRIMO LA CONSOLA QUE ESTA REVISANDO 
         Interfaz.RobotText.setText("ID: " + cola.primero.id + "Contador " + cola.primero.contador);
         

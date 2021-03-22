@@ -85,20 +85,32 @@ public class Cola {
         
         Nodo temp = primero;
         
+        if (primero.id == id) {
+            primero = primero.siguiente;
+        } else{
+        
         while(temp.siguiente != null){
             if (temp.id == id) {
+                
+                if (temp.siguiente != null) {
+                    temp.siguiente.anterior = temp.anterior;
+                }
+                
+                if (temp.anterior != null) {
+                    temp.anterior.siguiente = temp.siguiente;
+                }
                 break;
             }else{
                temp = temp.siguiente;
             }
             
-            temp.anterior.siguiente = temp.siguiente;
-            temp.siguiente.anterior = temp.anterior;
             
-            temp.siguiente = null;
-            temp.anterior = null;
             
            }
+        temp.siguiente = null;
+            temp.anterior = null;
+            return;
+    }
     }
     
     public Nodo ObtenerValorDe(int n){ 
