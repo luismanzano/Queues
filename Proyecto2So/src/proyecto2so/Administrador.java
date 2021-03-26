@@ -7,8 +7,8 @@ package proyecto2so;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JLabel;
- 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author leonp
@@ -18,207 +18,236 @@ public class Administrador {
     /**
      * @param args the command line arguments
      */
-    
-    
-        static Nivel1 cola1 = new Nivel1();
-        static Nivel2 cola2 = new Nivel2();
-        static Nivel3 cola3 = new Nivel3();
-        static Mantenimiento cola4 = new Mantenimiento();
-        private int contadorId = 0;
-        private int aleatorio;
+    static Nivel1 cola1 = new Nivel1();
+    static Nivel2 cola2 = new Nivel2();
+    static Nivel3 cola3 = new Nivel3();
+    static Mantenimiento cola4 = new Mantenimiento();
+    private int contadorId = 0;
+    private int aleatorio;
+    private Interfaz interfaz;
+
+    public Administrador(Interfaz interfaz) {
+        this.interfaz = interfaz;
+
+    }
+
+    public void actualizarEtiquetas() {
+
+        //ACTUALIZACION DE LA COLA 1
+        Nodo temp1 = cola1.primero;
+        Nodo temp2 = cola2.primero;
+        Nodo temp3 = cola3.primero;
+        Nodo temp4 = cola4.primero;
         
-        
-        public static void actualizarEtiquetas(){
-            JLabel nodos1[] = new JLabel[]{Interfaz.Nivel1_1, Interfaz.Nivel1_2, Interfaz.Nivel1_3, Interfaz.Nivel1_4, Interfaz.Nivel1_5, Interfaz.Nivel1_6};
-            JLabel nodos2[] = new JLabel[]{Interfaz.Nivel2_1, Interfaz.Nivel2_2, Interfaz.Nivel2_3, Interfaz.Nivel2_4, Interfaz.Nivel2_5, Interfaz.Nivel2_6};
-            JLabel nodos3[] = new JLabel[]{Interfaz.Nivel3_1, Interfaz.Nivel3_2, Interfaz.Nivel3_3, Interfaz.Nivel3_4, Interfaz.Nivel3_5, Interfaz.Nivel3_6};
-            JLabel nodos4[] = new JLabel[]{Interfaz.Mantenimiento_1, Interfaz.Mantenimiento_2, Interfaz.Mantenimiento_3, Interfaz.Mantenimiento_4, Interfaz.Mantenimiento_5, Interfaz.Mantenimiento_6};
-           
-            
-            Nodo temp1 = cola1.primero;
-            Nodo temp2 = cola2.primero;
-            Nodo temp3 = cola3.primero;
-            Nodo temp4 = cola4.primero;
-            
-            for (int i = 0; i < 6; i++) {
-                //ACTUALIZACION DE LA COLA 1
-                if (temp1 != null) {
-                nodos1[i].setText("ID: " + temp1.id + "\n" + "Contador: "+ String.valueOf(temp1.contador));
-                temp1 = (temp1.siguiente != null) ? temp1.siguiente : null;
-            } else {
-                    nodos1[i].setText("No hay");
-                }
-                
-                
-                 //ACTUALIZACION DE LA COLA 2
-                if (temp2 != null) {
-                nodos2[i].setText("ID: " + temp2.id + "\n" + "Contador: "+ String.valueOf(temp2.contador));
-                temp2 = (temp2.siguiente != null) ? temp2.siguiente : null;
-            } else {
-                    nodos2[i].setText("No hay");
-                }
-                
-                
-                 //ACTUALIZACION DE LA COLA 3
-                if (temp3 != null) {
-                nodos3[i].setText("ID: " + temp3.id + "\n" + "Contador: "+ String.valueOf(temp3.contador));
-                temp3 = (temp3.siguiente != null) ? temp3.siguiente : null;
-            } else {
-                    nodos3[i].setText("No hay");
-                }
-                
-               //ACTUALIZACION DE MANTENIMIENTO
-                if (temp4 != null) {
-                nodos4[i].setText("ID: " + temp4.id + "\n" + "Contador: "+ String.valueOf(temp4.contador));
-                temp4 = (temp4.siguiente != null) ? temp4.siguiente : null;
-            } else {
-                    nodos4[i].setText("No hay");
-                }
-                
-                
-            }
-            
+        DefaultTableModel modelo1 = new DefaultTableModel();
+        DefaultTableModel modelo2 = new DefaultTableModel();
+        DefaultTableModel modelo3 = new DefaultTableModel();
+        DefaultTableModel modelo4 = new DefaultTableModel();
+        modelo1.addColumn("Cola1");
+        modelo2.addColumn("Cola2");
+        modelo3.addColumn("Cola3");
+        modelo4.addColumn("Mantenimiento");
+
+        if (temp1 != null) {
+            System.out.println("IMPRIMIENDO COLA 1");
+            Object[] info = new Object[1];
+
+            do {
+
+                String p1 = "ID: " + temp1.id + "Contador: " + String.valueOf(temp1.contador);
+                System.out.println("!!!!!!!!!!!!!" + p1);
+                info[0] = p1;
+                modelo1.addRow(info);
+                temp1 = temp1.siguiente;
+            } while (temp1 != null);
+            this.interfaz.tablaP1.setModel(modelo1);
+
+        } else {
+            Object[] info = new Object[1];
+            info[0] = "Vacio";
+            modelo1.addRow(info);
         }
-        
-    public static void programa(){
+        if (temp2 != null) {
+            System.out.println("IMPRIMIENDO COLA 2");
+            do {
+
+                String p2 = "ID: " + temp2.id + "Contador: " + String.valueOf(temp2.contador);
+                System.out.println("!!!!!!!!!!!!!" + p2);
+                Object[] info = new Object[1];
+                info[0] = p2;
+                modelo2.addRow(info);
+                temp2 = temp2.siguiente;
+            } while (temp2 != null);
+            this.interfaz.tablaP2.setModel(modelo2);
+
+        } else {
+            Object[] info = new Object[1];
+            info[0] = "Vacio";
+            modelo2.addRow(info);
+        }
+
+        if (temp3 != null) {
+            System.out.println("IMPRIMIENDO COLA 3");
+            do {
+                String p3 = "ID: " + temp3.id + "Contador: " + String.valueOf(temp3.contador);
+                System.out.println("!!!!!!!!!!!!!" + p3);
+                Object[] info = new Object[1];
+                info[0] = p3;
+                modelo3.addRow(info);
+                temp3 = temp3.siguiente;
+            } while (temp3 != null);
+            this.interfaz.tablaP3.setModel(modelo3);
+        } else {
+            Object[] info = new Object[1];
+            info[0] = "";
+            modelo3.addRow(info);
+        }
+
+        if (temp4 != null) {
+            System.out.println("IMPRIMIENDO COLA 4");
+            do {
+
+                String p4 = "ID: " + temp4.id + "Contador: " + String.valueOf(temp4.contador);
+                System.out.println("!!!!!!!!!!!!!" + p4);
+                Object[] info = new Object[1];
+                info[0] = p4;
+                modelo4.addRow(info);
+                temp4 = temp4.siguiente;
+            } while (temp4 != null);
+            this.interfaz.tablaMantenimiento.setModel(modelo4);
+        } else {
+            Object[] info = new Object[1];
+            info[0] = "";
+            modelo4.addRow(info);
+        }
+
+    }
+
+    public void programa() {
         // TODO code application logic here
-        
-        Administrador admin = new Administrador();
+
         Robot robot = new Robot();
-        
+        Mantenimiento mantenimiento = new Mantenimiento();
         Timer temporizador = new Timer();
-        
+
         TimerTask tareaRobot = new TimerTask() {
             @Override
             public void run() {
-                if(!cola1.esVacio()){
+
+                if (!cola1.esVacio()) {
                     System.out.println("COLA 1");
                     robot.revisarConsola(cola1, cola4);
-                    cola1.actualizarContador();
-                    
-                    actualizarEtiquetas();
-                    
-                }else if(!cola2.esVacio()){
+
+                } else if (!cola2.esVacio()) {
                     System.out.println("COLA 2");
                     robot.revisarConsola(cola2, cola4);
-                    
-                    cola2.actualizarContador();
-                    actualizarEtiquetas();
-                    
-                }else if(!cola3.esVacio()){
+
+                } else if (!cola3.esVacio()) {
                     System.out.println("COLA 3");
                     robot.revisarConsola(cola3, cola4);
-                    
-                    cola3.actualizarContador();
-                    actualizarEtiquetas();
-                    
+
                 }
-                
-                admin.aumentarNivel(cola1, cola2, cola3);
+
+                cola1.actualizarContador();
+                cola2.actualizarContador();
+                cola3.actualizarContador();
+                aumentarNivel(cola1, cola2, cola3);
+                mantenimiento.listoParaRevision(cola4);
                 actualizarEtiquetas();
             }
         };
-        
+
         TimerTask tareaAdministrador = new TimerTask() {
             @Override
             public void run() {
-                admin.crearConsola();
+                crearConsola();
             }
         };
-        
+
         temporizador.schedule(tareaRobot, 0, 3000);
         temporizador.schedule(tareaAdministrador, 0, 4000);
-        
+
     }
-    
-    
-    public void crearConsola(){
-        
-        
-        
-        aleatorio = (int)(Math.random()*10+1);
-        
-        if(aleatorio < 8){
 
-            aleatorio = (int)(Math.random()*9+1);
+    public void crearConsola() {
 
-            if(aleatorio < 4){
+        aleatorio = (int) (Math.random() * 10 + 1);
+
+        if (aleatorio < 8) {
+            aleatorio = (int) (Math.random() * 9 + 1);
+
+            if (aleatorio < 4) {
 
                 contadorId++;
-                cola1.insertarPrimero(contadorId);
+                cola1.insertarPrimero(contadorId, 1);
 
-            }else if(aleatorio > 3 && aleatorio < 7){
-
-                contadorId++;
-                cola2.insertarPrimero(contadorId);
-                actualizarEtiquetas();
-
-            }else{
+            } else if (aleatorio > 3 && aleatorio < 7) {
 
                 contadorId++;
-                cola3.insertarPrimero(contadorId);
-                actualizarEtiquetas();
+                cola2.insertarPrimero(contadorId, 2);
+
+            } else {
+
+                contadorId++;
+                cola3.insertarPrimero(contadorId, 3);
 
             }
+            System.out.println("Creando nueva consola id: " + contadorId);
+            actualizarEtiquetas();
         }
-        
-        actualizarEtiquetas();
-        
+
     }
 
-    public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3){ ////////////FALTA COMPLETAR CON MARAVILLOSA IDEA DE LUIS ////////////
-        
-        if(!cola2.esVacio()){
-            
+    public void aumentarNivel(Nivel1 cola1, Nivel2 cola2, Nivel3 cola3) {
+
+        if (!cola2.esVacio()) {
+
             Nodo temp = cola2.primero;
-            
-            do { 
-                
-                if(temp.contador > 14){
-                    System.out.println("SUBIENDO A COLA 1");
-                    temp.contador = 0; 
+
+            do {
+
+                if (temp.contador > 14) {
+                    System.out.println("El contador es: " + temp.contador);
+                    temp.contador = 0;
                     cola2.subirNivel1(cola1, temp);
-                    
                     actualizarEtiquetas();
+
                 }
-           
+
                 temp = (temp.siguiente != null) ? temp.siguiente : temp;
             } while (temp.siguiente != null);
-            
+
         }
-        
-        
-        if(!cola3.esVacio()){
-            
+
+        if (!cola3.esVacio()) {
+
             Nodo temp = cola3.primero;
-            
-            do { 
-                
-                if(temp.contador > 14){
-                        System.out.println("SUBIENDO A COLA 2");
-                        temp.contador = 0;
-                       cola3.subirNivel2(cola2,temp);
-                       actualizarEtiquetas();
-//                    cola3.subirNivel2(cola2, temp);
-                        
 
+            do {
 
+                if (temp.contador > 14) {
+                    System.out.println("El contador es: " + temp.contador);
+                    temp.contador = 0;
+                    cola3.subirNivel2(cola2, temp);
+                    actualizarEtiquetas();
 
-
-/*
-nodo.anterior.siguiente
-*/
-                    
                 }
-           
+
                 temp = (temp.siguiente != null) ? temp.siguiente : temp;
             } while (temp.siguiente != null);
-            
-            
+
         }
-        actualizarEtiquetas();
-    }    
-    
+
+    }
+
+    public Interfaz getInterfaz() {
+        return interfaz;
+    }
+
+    public void setInterfaz(Interfaz interfaz) {
+        this.interfaz = interfaz;
+    }
+
 }
 
 

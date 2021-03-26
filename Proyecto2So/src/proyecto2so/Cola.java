@@ -18,19 +18,20 @@ public class Cola {
         return primero == null;
     }
     
-    public void insertarPrimero(int id){
+    public void insertarPrimero(int id, int prioridad){
         
         Nodo nuevo = new Nodo(id);
         
         if(esVacio()){
             
             primero = nuevo;
+            primero.prioridad = prioridad;
             
         }else{
             
             nuevo.siguiente = primero;
             primero = nuevo;
-            
+            primero.prioridad = prioridad;
         }
         
         dimension ++;
@@ -56,10 +57,10 @@ public class Cola {
         dimension ++;
     }
     
-    public void encolar(Nodo nodo){
+    public void encolar(Nodo nodo, int prioridad){
         
         if (primero == null) {
-            insertarPrimero(nodo.id);
+            insertarPrimero(nodo.id, prioridad);
         
         }else if(primero.siguiente == null){
         
@@ -108,9 +109,9 @@ public class Cola {
             
            }
         temp.siguiente = null;
-            temp.anterior = null;
-            return;
-    }
+        temp.anterior = null;
+            
+        }
     }
     
     public Nodo ObtenerValorDe(int n){ 
@@ -151,35 +152,18 @@ public class Cola {
         }
     }
     
-//    public void eliminarNodo(int id){ //////////////////// FALTA COMPLETAR /////////////////////
-//        
-//        if(primero==null){
-//            
-//        }else{
-//            Nodo temp = primero;
-//            int cont = 0;
-//            while(cont<id && temp.siguiente!=null){
-//                temp = temp.siguiente;
-//                cont++;
-//            }
-//            if(cont != id){
-//             
-//                
-//            }
-//        }   
-//    } ///////////////////////////////// FALTA COMPLETAR //////////////////////////
-    
-    public void encolarMantenimiento(Cola cola, Nodo nodo){ ////////////////////////// FALTA COMPLETAR /////////////////////
+
+    public void encolarMantenimiento(Cola cola, Nodo nodo, int prioridad){
+         
+        cola.encolar(nodo, prioridad);
         
-        cola.encolar(nodo);
-        //cola.eliminarPrimero();
-        
-    } /////////////////////// FALTA COMPLETAR /////////////////////////////
+    } 
     
     public void actualizarContador(){
         
         if(!esVacio()){
             Nodo temp = primero;
+            temp.contador += 1;
             
             while (temp.siguiente != null){                
                 
@@ -188,19 +172,12 @@ public class Cola {
                 
             }
             
-            if(primero.siguiente == null){
-             
-                temp.contador += 15;
-            }
+//            if(primero.siguiente == null){
+//             
+//                temp.contador += 15;
+//            }
             
-            //CODIGO DE LEO 
-//            do {                
-//                
-//                temp.contador +=1;
-//                temp = temp.siguiente;
-//                
-//            } while (temp.siguiente != null);
-//        }
+          
     }
     
 }

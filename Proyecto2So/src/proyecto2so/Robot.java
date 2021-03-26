@@ -29,17 +29,18 @@ public class Robot {
             
         }else if(probabilidad > 3 && probabilidad < 9){
             cola.primero.contador = 0;
-            cola.encolar(cola.primero);
+            cola.encolar(cola.primero, cola.primero.prioridad);
             System.out.println("Mas tiempo de revision");
             
         }else{
             cola.primero.contador = 0;
-            cola.encolarMantenimiento(mantenimiento, cola.primero);
+            mantenimiento.encolar(cola.primero, cola.primero.prioridad);
+//            cola.encolarMantenimiento(mantenimiento, cola.primero, cola.primero.prioridad);
             System.out.println("Salio para mantenimiento");
             
         }
         
-        mantenimiento.listoParaRevision();
+        
         
         cola.eliminarPrimero();
     }

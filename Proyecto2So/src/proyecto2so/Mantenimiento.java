@@ -6,6 +6,8 @@
 package proyecto2so;
 
 import static proyecto2so.Administrador.cola3;
+import static proyecto2so.Administrador.cola2;
+import static proyecto2so.Administrador.cola1;
 
 /**
  *
@@ -13,13 +15,26 @@ import static proyecto2so.Administrador.cola3;
  */
 public class Mantenimiento extends Cola {
     
-    public void listoParaRevision(){
+    public void listoParaRevision(Cola cola){
         double prob = Math.random();
-        if(primero != null){
+        if(cola.primero != null){
             if (prob > 0.44) {
-            cola3.encolar(primero);
-        
-        eliminarPrimero();
+                System.out.println("Regresando consola " + cola.primero.id + " a la cola: " + cola.primero.prioridad );
+            switch(cola.primero.prioridad){
+                case 1:
+                    System.out.println("CASO 1 ENTRA");
+                    cola1.encolar(cola.primero, cola.primero.prioridad);
+                    break;
+                case 2:
+                    System.out.println("CASO 2 ENTRA");
+                    cola2.encolar(cola.primero, cola.primero.prioridad);
+                    break;
+                case 3:
+                    System.out.println("CASO 3 ENTRA");
+                    cola3.encolar(cola.primero, cola.primero.prioridad);
+                    break;
+            }
+        cola.eliminarPrimero();
         }
         }
         

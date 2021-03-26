@@ -21,7 +21,7 @@ public class Nivel2 extends Cola{
         //MANDARLO A LA NUEVA COLA 
         //DESENCOLAR EL NODO QUE QUIERO 
         desencolar(nodo.id);
-        cola.encolar(nodo);
+        cola.encolar(nodo, 1);
         
         System.out.println("Se subio a nivel 1: " + nodo.id);
 //        if (nodo.anterior == null) {
